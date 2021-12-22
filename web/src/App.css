@@ -23,3 +23,12 @@ nav a {
 .app--th-body {
     width: 200px;
 }
+
+.SortByLetter {
+    display: flex!important;
+    flex-wrap: wrap;
+}
+
+.SortByLetter button {
+    margin-left: 5px;
+}

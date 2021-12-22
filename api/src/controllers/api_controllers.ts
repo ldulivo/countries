@@ -22,10 +22,7 @@ export const getAll = async ( req: Request, res: Response ) => {
     }
     
     const data = countryModel.data();
-    /* res.json({
-        data
-    }) */
-    res.status(200).send(data)
+    res.status(200).json(data)
 }
 
 export const getContinent = async ( req: Request, res: Response ) => {
@@ -45,8 +42,38 @@ export const getContinent = async ( req: Request, res: Response ) => {
     }
 
     const data = countryModel.data();
-    /* res.json({
-        data
-    }) */
-    res.status(200).send(data)
+    res.status(200).json(data)
+}
+
+export const getList = async ( req: Request, res: Response ) => {
+    const fileData = await loadFile( file );
+    const countryModel = new CountryModels;
+    let aux:any[] = [];
+
+    const { search } = req.query;
+
+    let data = countryModel.data();
+    countryModel.created(fileData.countries, 'all', false, false)
+    countryModel.orderBy( String( search ));
+
+    
+    data.map( continent => {
+
+        switch (search) {
+            case 'continentName':
+                if( !aux.includes(continent.continentName) ) {
+                    aux.push(continent.continentName)
+                }
+                break;
+        
+            default:
+                if( !aux.includes( continent.countryName.substr(0, 1) ) ) {
+                    aux.push( continent.countryName.substr(0, 1) )
+                }
+                break;
+        }
+    })
+
+    data = aux;
+    res.status(200).json(data)
 }
