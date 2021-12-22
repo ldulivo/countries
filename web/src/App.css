@@ -1,0 +1,25 @@
+body {
+    background: #fbddd2;
+}
+.app {
+    height: 100%;
+}
+
+.app-container{
+    height: 100%;
+    margin-top: 74px;
+}
+
+
+nav a {
+    color: #f7e1e1;
+    text-decoration: none;
+}
+
+.app--th-head {
+    width: 30px;
+}
+
+.app--th-body {
+    width: 200px;
+}
