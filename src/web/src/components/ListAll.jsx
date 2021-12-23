@@ -7,6 +7,7 @@ import { Button, Input, InputGroup } from 'reactstrap'
 
 const Listall = ({ urlApi, vOnlyCountry }) => {
     const [countries, setCountries] = useState([])
+    const [auxCountries, setAuxCountries] = useState([])
     const [orderActive, setOrderActive] = useState(2)
     const [order, setOrder] = useState('countryName')
     const [letter, setLetter] = useState('')
@@ -50,11 +51,31 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
      */
     const handleSearchCountry = (event) => {
         setNewSearch(event.target.value)
+        searchByInitialLetter(event.target.value)
     }
 
-    useEffect(() => {
-        console.log(newSearch);
-    }, [newSearch])
+    const searchByInitialLetter = (search = newSearch) => {
+        /**
+         * Clean auxCountries 
+         */
+        setAuxCountries([])
+        
+        /**
+         * Map search matches in auxCountries
+         */
+        let aux = [];
+        const numberOfCharacters = String(search).length
+        
+        countries.map( (country) => (
+            ( String(country.countryName).substring(0,numberOfCharacters).toLowerCase() === String(search).toLowerCase() )
+                ?
+                aux.push(country)
+                : null
+            
+        ));
+        
+        setAuxCountries(aux)
+    }
     
     return (
         <>
@@ -78,7 +99,11 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
             <SortByLetter urlApi={urlApi} orderBy={orderListBy} letter={letter} />
             <br />
             <SortByContinent urlApi={urlApi} orderBy={orderListBy} continent={continent} />
-            <List countries={countries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
+            {(auxCountries.length === 0)
+                ?<List countries={countries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
+                :<List countries={auxCountries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
+            }
+            
         </>
     )
 }

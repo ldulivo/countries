@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import './App.css';
-import Listall from './components/Listall';
+import ListAll from './components/ListAll';
 import Main from './components/Main';
 import MenuNavBar from './components/helpers/MenuNavBar';
 import ViewOnlyCountry from './components/ViewOnlyCountry';
@@ -22,7 +22,7 @@ function App() {
           <Container className="bg-light app-container" >
             <Routes>
                 <Route path='/' element={<Main />} />
-                <Route path='/list' element={<Listall urlApi={urlApi} vOnlyCountry={vOnlyCountry} />} />
+                <Route path='/list' element={<ListAll urlApi={urlApi} vOnlyCountry={vOnlyCountry} />} />
                 <Route path='/country' element={<ViewOnlyCountry urlApi={urlApi} onlyCountry={onlyCountry}/>} />
             </Routes>
           </Container>
