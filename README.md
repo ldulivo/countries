@@ -8,12 +8,16 @@ Frontend created with React.Js
 The RESTful API provides information about countries.
 
 **Get a complete list of all countries.**
-```http://localhost:8000/api```
+```
+http://localhost:8000/api
+```
 
 **Filter by initial letter.**
 
-__Ejemplo de letra a:__
-```http://localhost:8000/api?firstChar=A```
+_Example letter a:_
+```
+http://localhost:8000/api?firstChar=A
+```
 
 **Sort by category.**
 
@@ -31,27 +35,39 @@ __Ejemplo de letra a:__
 * isoAlpha3
 * geonameId
 
-__Example for category country name (countryName):__
-```http://localhost:8000/api?orderBy=countryName```
+_Example for category country name (countryName):_
+```
+http://localhost:8000/api?orderBy=countryName
+```
 
-__You can combine the filters:__
-```http://localhost:8000/api?firstChar=A&orderBy=countryName```
+_You can combine the filters:_
+```
+http://localhost:8000/api?firstChar=A&orderBy=countryName
+```
 
 **View for continent.**
 
-__For example see countries by European continent:__
-```http://localhost:8000/api/continent/europe```
+_For example see countries by European continent:_
+```
+http://localhost:8000/api/continent/europe
+```
 
-__View by continents and add filters:__
-```http://localhost:8000/api/continent/europe?firstChar=A&orderBy=countryName```
+_View by continents and add filters:_
+```
+http://localhost:8000/api/continent/europe?firstChar=A&orderBy=countryName
+```
 
 **Information for a specific country.**
-```http://localhost:8000/api?countryFind=Italy```
+```
+http://localhost:8000/api?countryFind=Italy
+```
 
 **Returns a list of initial letters of each country ordered alphabetically without repeating the same letter.**
-```http://localhost:8000/api/list```
+```
+http://localhost:8000/api/list
+```
 
-```[
+```
 "A",
 "Å",
 "B",
@@ -78,12 +94,14 @@ __View by continents and add filters:__
 "W",
 "Y",
 "Z"
-]```
+```
 
 **Returns a list with the names of the existing continents ordered alphabetically without repeating the same continent.**
-```http://localhost:8000/api/list?search=continentName```
+```
+http://localhost:8000/api/list?search=continentName
+```
 
-```[
+```
 "Africa",
 "Antarctica",
 "Asia",
@@ -91,4 +109,4 @@ __View by continents and add filters:__
 "North America",
 "Oceania",
 "South America"
-]```
+```
