@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 
 import apiRouters from '../routes/api_routes';
+import apiWeather from '../routes/weather_routes';
 
 class Server {
 
@@ -34,6 +35,7 @@ class Server {
     routers() {
         
         this.app.use( '/api', apiRouters );
+        this.app.use( '/api/weather', apiWeather );
     }
 
     

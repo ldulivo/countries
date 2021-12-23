@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_routes_1 = __importDefault(require("../routes/api_routes"));
+const weather_routes_1 = __importDefault(require("../routes/weather_routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -25,6 +26,7 @@ class Server {
     }
     routers() {
         this.app.use('/api', api_routes_1.default);
+        this.app.use('/api/weather', weather_routes_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {
