@@ -3,7 +3,8 @@ import axios from 'axios'
 import List from './helpers/List'
 import SortByLetter from './helpers/SortByLetter'
 import SortByContinent from './helpers/SortByContinent'
-import { Button, Input, InputGroup } from 'reactstrap'
+import { Input, InputGroup } from 'reactstrap'
+import Search from './helpers/Search'
 
 const Listall = ({ urlApi, vOnlyCountry }) => {
     const [countries, setCountries] = useState([])
@@ -13,6 +14,7 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
     const [letter, setLetter] = useState('')
     const [continent, setContinent] = useState('')
     const [newSearch, setNewSearch] = useState('')
+    const [auxSearch, setAuxSearch] = useState([])
 
     /**
      * First get list all countries
@@ -22,6 +24,7 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
             .get(`${urlApi}/api`)
             .then(res => {
                 setCountries(res.data)
+                setAuxCountries(res.data)
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -54,27 +57,24 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
         searchByInitialLetter(event.target.value)
     }
 
-    const searchByInitialLetter = (search = newSearch) => {
-        /**
-         * Clean auxCountries 
-         */
-        setAuxCountries([])
+    const searchByInitialLetter = (auxSearch = newSearch) => {
         
-        /**
-         * Map search matches in auxCountries
-         */
         let aux = [];
-        const numberOfCharacters = String(search).length
+        const numberOfCharacters = String(auxSearch).length
         
-        countries.map( (country) => (
-            ( String(country.countryName).substring(0,numberOfCharacters).toLowerCase() === String(search).toLowerCase() )
+        auxCountries.map( (country) => (
+            ( String(country.countryName).substring(0,numberOfCharacters).toLowerCase() === String(auxSearch).toLowerCase() )
                 ?
                 aux.push(country)
                 : null
             
         ));
         
-        setAuxCountries(aux)
+        if( numberOfCharacters === 0){
+            setAuxSearch([])
+        } else {
+            setAuxSearch(aux)
+        }
     }
     
     return (
@@ -91,18 +91,18 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
             <div>
                 <InputGroup>
                     <Input placeholder='country name' onChange={handleSearchCountry} value={newSearch} />
-                    <Button>Search</Button>
                 </InputGroup>
             </div>
+            {( auxSearch.length === 0 )
+                ? null
+                :<Search auxSearch={auxSearch} vOnlyCountry={vOnlyCountry} />
+            }
         </div>
 
             <SortByLetter urlApi={urlApi} orderBy={orderListBy} letter={letter} />
             <br />
             <SortByContinent urlApi={urlApi} orderBy={orderListBy} continent={continent} />
-            {(auxCountries.length === 0)
-                ?<List countries={countries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
-                :<List countries={auxCountries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
-            }
+            <List countries={countries} orderBy={orderListBy} orderActive={orderActive} vOnlyCountry={vOnlyCountry} />
             
         </>
     )

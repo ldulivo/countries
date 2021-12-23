@@ -14,10 +14,42 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative
 }
 
 .app--list-title input {
     width: 162px!important;
+}
+
+.app--list-search {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 300px;
+    max-height: 350px;
+    overflow: hidden;
+
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s;
+}
+
+.app--list-search a {
+    text-decoration: none;
+    color: #17a2b8;
+}
+
+.app--list-search-scroll {
+    overflow-y: scroll;
 }
 
 .input-group {
@@ -35,6 +67,10 @@ nav a {
 
 .app--th-body {
     width: 200px;
+}
+
+tbody a {
+    text-decoration: none;
 }
 
 .SortByLetter {
