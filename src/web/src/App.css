@@ -10,6 +10,19 @@ body {
     margin-top: 74px;
 }
 
+.app--list-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app--list-title input {
+    width: 162px!important;
+}
+
+.input-group {
+    width: auto;
+}
 
 nav a {
     color: #f7e1e1;

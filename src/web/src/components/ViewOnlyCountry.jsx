@@ -15,7 +15,6 @@ const [country, setCountry] = useState('')
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    console.log(country);
 
     return (
         <div>
@@ -45,58 +44,58 @@ const [country, setCountry] = useState('')
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>continentName</th>
+                        <th>Continent Name</th>
                         <td>{country.continentName}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>continent</th>
+                        <th>Continent</th>
                         <td>{country.continent}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>areaInSqKm</th>
-                        <td>{country.areaInSqKm}</td>
+                        <th>Area In Sq Km</th>
+                        <td>{ parseFloat(country.areaInSqKm).toLocaleString('en') }</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>languages</th>
+                        <th>Languages</th>
                         <td>{country.languages}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>countryCode</th>
+                        <th>Country Code</th>
                         <td>{country.countryCode}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>currencyCode</th>
+                        <th>Currency Code</th>
                         <td>{country.currencyCode}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>population</th>
-                        <td>{country.population}</td>
+                        <th>Population</th>
+                        <td>{ parseFloat(country.population).toLocaleString('en') }</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>fipsCode</th>
+                        <th>Fips Code</th>
                         <td>{country.fipsCode}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>isoNumeric</th>
+                        <th>ISO Numeric</th>
                         <td>{country.isoNumeric}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>isoAlpha3</th>
+                        <th>ISO Alpha3</th>
                         <td>{country.isoAlpha3}</td>
                     </tr>
                     <tr>
                         <td ></td>
-                        <th>geonameId</th>
-                        <td>{country.geonameId}</td>
+                        <th>Geoname Id</th>
+                        <td>{ parseFloat(country.geonameId).toLocaleString('en') }</td>
                     </tr>
                 </tbody>
             </Table>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button } from 'reactstrap'
 
-const SortByLetter = ({ urlApi, letter, orderBy }) => {
+const SortByContinent = ({ urlApi, continent, orderBy }) => {
     const [list, setList] = useState([])
 
     /**
@@ -10,7 +10,7 @@ const SortByLetter = ({ urlApi, letter, orderBy }) => {
      */
      useEffect(() => {
         axios
-            .get(`${urlApi}/api/list`)
+            .get(`${urlApi}/api/list?search=continentName`)
             .then(res => {
                 setList(res.data)
             })
@@ -21,26 +21,26 @@ const SortByLetter = ({ urlApi, letter, orderBy }) => {
         <div className='SortByLetter'>
             <Button
                 color= "primary"
-                className={( '' === letter )? "active" : "" }
+                className={( '' === continent )? "active" : "" }
                 outline
                 size="sm"
 
-                onClick={() => orderBy( 'countryName',2,``)}
+                onClick={() => orderBy( {byContinent:''} )}
             >
                 ALL
             </Button>
             {
-                list.map( (myLetter, index) => 
+                list.map( (myContinent, index) => 
                     <Button
                         key={index}
                         color="primary"
-                        className={( ( `&firstChar=${myLetter}` ) === letter )? "active" : "" }
+                        className={( ( `/continent/${myContinent}` ) === continent )? "active" : "" }
                         outline
                         size="sm"
 
-                        onClick={() => orderBy( 'countryName',2,`&firstChar=${myLetter}`)}
+                        onClick={() => orderBy( { byContinent:`/continent/${myContinent}`} )}
                     >
-                        {myLetter}
+                        {myContinent}
                     </Button>
                 )
             }
@@ -48,4 +48,4 @@ const SortByLetter = ({ urlApi, letter, orderBy }) => {
     )
 }
 
-export default SortByLetter
+export default SortByContinent

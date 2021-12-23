@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button } from 'reactstrap'
 
-const SortByContinent = ({ urlApi, continent, orderBy }) => {
+const SortByLetter = ({ urlApi, letter, orderBy }) => {
     const [list, setList] = useState([])
 
     /**
@@ -10,7 +10,7 @@ const SortByContinent = ({ urlApi, continent, orderBy }) => {
      */
      useEffect(() => {
         axios
-            .get(`${urlApi}/api/list?search=continentName`)
+            .get(`${urlApi}/api/list`)
             .then(res => {
                 setList(res.data)
             })
@@ -21,26 +21,26 @@ const SortByContinent = ({ urlApi, continent, orderBy }) => {
         <div className='SortByLetter'>
             <Button
                 color= "primary"
-                className={( '' === continent )? "active" : "" }
+                className={( '' === letter )? "active" : "" }
                 outline
                 size="sm"
 
-                onClick={() => orderBy( 'countryName',2,``, ``)}
+                onClick={() => orderBy({ byLetter:''})}
             >
                 ALL
             </Button>
             {
-                list.map( (myContinent, index) => 
+                list.map( (myLetter, index) => 
                     <Button
                         key={index}
                         color="primary"
-                        className={( ( `/continent/${myContinent}` ) === continent )? "active" : "" }
+                        className={( ( `&firstChar=${myLetter}` ) === letter )? "active" : "" }
                         outline
                         size="sm"
 
-                        onClick={() => orderBy( 'countryName',2,``, `/continent/${myContinent}`)}
+                        onClick={() => orderBy( {byLetter:`&firstChar=${myLetter}`} )}
                     >
-                        {myContinent}
+                        {myLetter}
                     </Button>
                 )
             }
@@ -48,4 +48,4 @@ const SortByContinent = ({ urlApi, continent, orderBy }) => {
     )
 }
 
-export default SortByContinent
+export default SortByLetter

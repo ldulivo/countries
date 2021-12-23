@@ -12,7 +12,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                     <tr>
                         <th>
                             <Button
-                                onClick={ () => orderBy('countryCode', 1) }
+                                onClick={ () => orderBy({orderBy:'countryCode', orderByActive:1}) }
                                 color={(orderActive===1)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -21,7 +21,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('countryName', 2) }
+                                onClick={ () => orderBy({orderBy:'countryName', orderByActive:2}) }
                                 color={(orderActive===2)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -30,7 +30,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('capital', 3) }
+                                onClick={ () => orderBy({orderBy:'capital', orderByActive:3}) }
                                 color={(orderActive===3)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -39,7 +39,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('continentName', 4) }
+                                onClick={ () => orderBy({orderBy:'continentName', orderByActive:4}) }
                                 color={(orderActive===4)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -48,7 +48,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('languages', 5) }
+                                onClick={ () => orderBy({orderBy:'languages', orderByActive:5}) }
                                 color={(orderActive===5)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -57,7 +57,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('areaInSqKm', 6) }
+                                onClick={ () => orderBy({orderBy:'areaInSqKm', orderByActive:6}) }
                                 color={(orderActive===6)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -66,7 +66,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('geonameId', 7) }
+                                onClick={ () => orderBy({orderBy:'geonameId', orderByActive:7}) }
                                 color={(orderActive===7)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -75,7 +75,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('isoNumeric', 8) }
+                                onClick={ () => orderBy({orderBy:'isoNumeric', orderByActive:8}) }
                                 color={(orderActive===8)? "primary" : "secondary" }
                                 size="sm"
                             >
@@ -84,7 +84,7 @@ const List = ({ countries, orderBy, orderActive, vOnlyCountry }) => {
                         </th>
                         <th>
                             <Button
-                                onClick={ () => orderBy('population', 9) }
+                                onClick={ () => orderBy({orderBy:'population', orderByActive:9}) }
                                 color={(orderActive===9)? "primary" : "secondary" }
                                 size="sm"
                             >

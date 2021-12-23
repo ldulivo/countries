@@ -3,6 +3,7 @@ import axios from 'axios'
 import List from './helpers/List'
 import SortByLetter from './helpers/SortByLetter'
 import SortByContinent from './helpers/SortByContinent'
+import { Button, Input, InputGroup } from 'reactstrap'
 
 const Listall = ({ urlApi, vOnlyCountry }) => {
     const [countries, setCountries] = useState([])
@@ -10,6 +11,7 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
     const [order, setOrder] = useState('countryName')
     const [letter, setLetter] = useState('')
     const [continent, setContinent] = useState('')
+    const [newSearch, setNewSearch] = useState('')
 
     /**
      * First get list all countries
@@ -26,7 +28,9 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
     /**
      * Function for order the list
      */
-    const orderListBy = (orderBy=order, orderByActive, byLetter=letter, byContinent=continent) => {
+    const orderListBy = (
+        { orderBy=order, orderByActive=orderActive, byLetter=letter, byContinent=continent }
+    ) => {
 
         let fullURL = `${urlApi}/api${byContinent}?orderBy=${orderBy}${byLetter}`;
 
@@ -40,10 +44,37 @@ const Listall = ({ urlApi, vOnlyCountry }) => {
             setLetter(byLetter)
             setContinent(byContinent)
     }
+
+    /**
+     * Button search country
+     */
+    const handleSearchCountry = (event) => {
+        setNewSearch(event.target.value)
+    }
+
+    useEffect(() => {
+        console.log(newSearch);
+    }, [newSearch])
     
     return (
         <>
-            <h1>Complete list of countries</h1>
+        <div className='app--list-title'>
+            <div>
+                <h1>{
+                    ( letter === '') 
+                        ? "Complete list of countries"
+                        : `Countries that start with the letter ${ String(letter).substr(11,1) }`
+                    }
+                </h1>
+            </div>
+            <div>
+                <InputGroup>
+                    <Input placeholder='country name' onChange={handleSearchCountry} value={newSearch} />
+                    <Button>Search</Button>
+                </InputGroup>
+            </div>
+        </div>
+
             <SortByLetter urlApi={urlApi} orderBy={orderListBy} letter={letter} />
             <br />
             <SortByContinent urlApi={urlApi} orderBy={orderListBy} continent={continent} />

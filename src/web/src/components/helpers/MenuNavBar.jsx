@@ -31,7 +31,7 @@ const MenuNavBar = () => {
                     </Link>
                     </NavItem>
                 </Nav>
-                <NavbarText>
+                <NavbarText className='navbar-brand' >
                     dulivo.com
                 </NavbarText>
                 </Collapse>
