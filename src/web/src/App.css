@@ -61,12 +61,22 @@ nav a {
     text-decoration: none;
 }
 
+/*
+* ViewOnlyCountry
+*/
 .app--th-head {
-    width: 30px;
+    width: 10%;
+}
+
+.app--td-body2 {
+    width: 70%;
 }
 
 .app--th-body {
-    width: 200px;
+    width: 20%;
+}
+.app--table-weather {
+    background: #38b44a;
 }
 
 tbody a {
@@ -80,4 +90,136 @@ tbody a {
 
 .SortByLetter button {
     margin-left: 5px;
+}
+
+/*
+* leaflet
+* https://unpkg.com/leaflet@1.6.0/dist/leaflet.css
+* https://unpkg.com/leaflet@1.7.0/dist/leaflet.css
+*/
+.maps--search {
+    width: 100%;
+    height: 300px;
+}
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+}
+
+/*
+* Spinner
+*/
+
+.spinner--content {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    animation: s-box linear forwards infinite 2s;
+}
+
+.spinner--blue,
+.spinner--red,
+.spinner--yellow,
+.spinner--green {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    position: absolute;
+}
+
+.spinner--blue {
+    top: 0;
+    left: 0;
+    background: blue;
+    animation: s-blue linear forwards infinite 3s;
+}
+
+.spinner--green {
+    top: 0;
+    right: 0;
+    background: green;
+    animation: s-green linear forwards infinite 3s;
+}
+
+.spinner--red {
+    bottom: 0;
+    left: 0;
+    background: red;
+    animation: s-red linear forwards infinite 3s;
+}
+
+.spinner--yellow {
+    bottom: 0;
+    right: 0;
+    background: yellow;
+    animation: s-yellow linear forwards infinite 3s;
+}
+
+@keyframes s-box {
+    0% {
+        transform: rotate(359deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes s-blue {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    50% {
+        top: calc(100% - 39px);
+        left: calc(100% - 39px);
+    }
+    100% {
+        top: 0%;
+        left: 0%;
+    }
+}
+
+@keyframes s-green {
+    0% {
+        top: 0;
+        right: 0;
+    }
+    50% {
+        top: calc(100% - 39px);
+        right: calc(100% - 39px);
+    }
+    100% {
+        top: 0;
+        right: 0;
+    }
+}
+
+@keyframes s-red {
+    0% {
+        bottom: 0;
+        left: 0;
+    }
+    50% {
+        bottom: calc(100% - 39px);
+        left: calc(100% - 39px);
+    }
+    100% {
+        bottom: 0;
+        left: 0;
+    }
+}
+
+@keyframes s-yellow {
+    0% {
+        bottom: 0;
+        right: 0;
+    }
+    50% {
+        bottom: calc(100% - 39px);
+        right: calc(100% - 39px);
+    }
+    100% {
+        bottom: 0;
+        right: 0;
+    }
 }

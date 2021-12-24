@@ -65,7 +65,9 @@ const countryData = async ( lat:any, lon:any ) => {
             desc: resp.data.weather[0].description,
             min: resp.data.main.temp_min,
             max: resp.data.main.temp_max,
-            temp: resp.data.main.temp
+            temp: resp.data.main.temp,
+            lat,
+            lon
         };
         
     } catch (error) {
